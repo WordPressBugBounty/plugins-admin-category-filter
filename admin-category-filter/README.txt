@@ -1,20 +1,28 @@
-=== Post Category Filter ===
-Tags: filter, category, categories, taxonomy, taxonomies, post
-Requires at least: 3.5.0
-Tested up to: 4.9
-Stable tag: 1.6.1
+=== Post Category Filter (WP Admin) ===
+Contributors: ivijanstefan, creativform
+Tags: categories, taxonomy, filter, admin, posts
+Requires at least: 6.0
+Tested up to: 6.9
+Requires PHP: 7.4
+Stable tag: 1.7.2
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Filter post categories and taxonomies live in the WordPress admin area
+Quickly search and filter categories and taxonomies inside the WordPress admin.
 
 == Description ==
 
-Post Category Filter allows you to filter through your post categories and custom taxonomies by adding a search box on top of the term lists. The lists will update live as you type with only the relevant results based on your search query.
+Post Category Filter allows you to filter your post categories and custom taxonomies by adding a fast and intuitive search box on top of the term lists. As you type, the list updates instantly and shows only the categories or terms that match your query, making navigation quick even on sites with hundreds or thousands of entries.
+
+This plugin is designed for users who work with large WordPress websites, complex content structures, or extensive taxonomy sets. Instead of scrolling endlessly through long category lists, you can simply type a few letters and immediately locate the term you need. It provides a smoother editorial workflow and helps reduce time spent searching for the right category during post creation or editing.
+
+Post Category Filter works seamlessly inside the WordPress admin interface and supports all public taxonomies, including custom taxonomies created by themes or plugins. It does not modify your categories or database in any way. It simply adds an efficient, lightweight search layer to help you manage and assign terms more effectively.
+
+If you maintain a high volume of content, run news or magazine style websites, or organize your posts through detailed taxonomies, this plugin can significantly improve your daily publishing workflow. It is a simple but powerful solution for anyone looking to optimize category management, streamline content editing, and enhance usability in the WordPress admin area.
 
 = Want to contribute? =
 
-You can follow the [Github repository](https://github.com/jahvi/post-category-filter) and submit issues or pull requests.
+You can follow the [Github repository](https://github.com/InfinitumForm/post-category-filter) and submit issues or pull requests.
 
 == Installation ==
 
@@ -56,6 +64,19 @@ Yes.
 2. Filtered results
 
 == Changelog ==
+
+= 1.7.2 =
+* Fixed outdated search algorithms
+* Fixed problem with transition to new code
+
+= 1.7.1 =
+* Better plugin load and fixed constants.
+
+= 1.7.0 =
+* Declared adoption and credits to original author (Javier Villanueva).
+* Updated copyright information.
+* Confirmed GPLv2 compliance and code independence.
+* Compatibility tested with WordPress 6.7.
 
 = 1.6.1 =
 * Update for WordPress 4.9
@@ -119,3 +140,20 @@ Yes.
 
 = 1.0.0 =
 * First version
+
+== Adoption Notice ==
+
+This plugin represents the continued development of the original "Admin Category Filter" created by Javier Villanueva (@jahvi).
+
+The project has been revived with the intention of ensuring long-term stability, modern compatibility, and responsible maintenance while preserving the core functionality that made the original plugin widely used.
+
+== Credits ==
+
+Original author: Javier Villanueva (jahvi)
+Maintainer and current developer: Ivijan Stefan Stipic (INFINITUM FORM)
+
+== Legal Notice ==
+
+This plugin retains the original GPLv2 license from the upstream version authored by Javier Villanueva (@jahvi).
+
+All new contributions are © 2025 Ivijan Stefan Stipic and released under the same GPLv2-or-later license.
