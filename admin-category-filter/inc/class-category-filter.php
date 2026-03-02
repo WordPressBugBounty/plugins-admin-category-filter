@@ -81,24 +81,31 @@ if ( ! class_exists( 'Post_Category_Filter' ) ) {
          * @return void
          */
         public function enqueue_admin_assets( $hook ) {
-            // Only on post editor and list tables where categories checklists appear.
-            $supported = array( 'post.php', 'post-new.php', 'edit.php' );
-            if ( ! in_array( $hook, $supported, true ) ) {
-                return;
-            }
+			$supported = array( 'post.php', 'post-new.php', 'edit.php' );
+			if ( ! in_array( $hook, $supported, true ) ) {
+				return;
+			}
 
-            // Script.
-            wp_register_script(
-                'pcf-admin',
-                APCF_PLUGIN_URL . 'assets/js/admin.js',
-                array( 'jquery' ),
-                (string)APCF_VERSION,
-                true
-            );
+			wp_register_script(
+				'pcf-admin',
+				APCF_PLUGIN_URL . 'assets/js/admin.js',
+				array( 'jquery' ),
+				(string) APCF_VERSION,
+				true
+			);
 
-            wp_localize_script( 'pcf-admin', 'pcfPlugin', $this->get_plugin_settings() );
-            wp_enqueue_script( 'pcf-admin' );
-        }
+			$settings = $this->get_plugin_settings();
+
+			// Backward compatibility: old JS expects fc_plugin.
+			wp_localize_script( 'pcf-admin', 'fc_plugin', array(
+				'placeholder' => isset( $settings['placeholderFinal'] ) ? $settings['placeholderFinal'] : 'Filter Categories',
+			) );
+
+			// New JS object (current).
+			wp_localize_script( 'pcf-admin', 'pcfPlugin', $settings );
+
+			wp_enqueue_script( 'pcf-admin' );
+		}
 
         /**
          * Localize after screen is set to correctly detect base.
@@ -115,17 +122,34 @@ if ( ! class_exists( 'Post_Category_Filter' ) ) {
          * @return array
          */
         public function get_plugin_settings() {
-            $screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
-            $base   = $screen ? $screen->base : '';
+			$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+			$base   = $screen ? (string) $screen->base : '';
 
-            /* translators: %s: taxonomy singular name. */
-            $placeholder = esc_html__( 'Filter %s', 'admin-category-filter' );
+			// Provide both template and final string to avoid %s issues.
+			$placeholder_template = __( 'Filter %s', 'admin-category-filter' );
 
-            return array(
-                'placeholder' => $placeholder,
-                'screenName'  => $base,
-				'enableGutenberg' => (bool) apply_filters('pcf_enable_gutenberg_filter', true),
-            );
-        }
+			// Default to "Categories" unless we can infer better.
+			$taxonomy_label = __( 'Categories', 'admin-category-filter' );
+
+			// If we are on a post type screen, try to infer the taxonomy label.
+			if ( $screen && ! empty( $screen->post_type ) ) {
+				// WooCommerce products typically use "product_cat".
+				$tax = ( 'product' === $screen->post_type ) ? 'product_cat' : 'category';
+
+				$taxonomy_obj = get_taxonomy( $tax );
+				if ( $taxonomy_obj && ! empty( $taxonomy_obj->labels->singular_name ) ) {
+					$taxonomy_label = (string) $taxonomy_obj->labels->singular_name;
+				}
+			}
+
+			$placeholder_final = sprintf( $placeholder_template, $taxonomy_label );
+
+			return array(
+				'placeholder'        => $placeholder_template,
+				'placeholderFinal'   => $placeholder_final,
+				'screenName'         => $base,
+				'enableGutenberg'    => (bool) apply_filters( 'pcf_enable_gutenberg_filter', true ),
+			);
+		}
     }
 }

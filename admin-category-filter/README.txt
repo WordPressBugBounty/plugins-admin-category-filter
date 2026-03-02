@@ -4,7 +4,7 @@ Tags: categories, taxonomy, filter, admin, posts
 Requires at least: 6.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.7.2
+Stable tag: 1.7.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -64,6 +64,13 @@ Yes.
 2. Filtered results
 
 == Changelog ==
+
+= 1.7.3 =
+* Fixed issue where category search input was not rendering on WooCommerce product
+* Corrected JS initialization logic to ensure script runs reliably
+* Improved selector targeting for taxonomy containers
+* Prevented early return condition from blocking search field injection
+* Ensured compatibility with latest WordPress and WooCommerce updates
 
 = 1.7.2 =
 * Fixed outdated search algorithms
