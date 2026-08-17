@@ -3,7 +3,7 @@
  * Plugin Name:       Post Category Filter (WP Admin)
  * Plugin URI:        https://infinitumform.com/projects/admin-category-filter
  * Description:       Quickly search and filter categories and taxonomies inside the WordPress admin.
- * Version:           1.7.4
+ * Version:           1.7.5
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Ivijan Stefan Stipic
@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Define constants.
 if ( ! defined( 'APCF_VERSION' ) ) {
-    define( 'APCF_VERSION', '1.7.4' );
+    define( 'APCF_VERSION', '1.7.5' );
 }
 
 if ( ! defined( 'APCF_PLUGIN_FILE' ) ) {

@@ -2,9 +2,9 @@
 Contributors: ivijanstefan, creativform
 Tags: categories, taxonomy, filter, admin, posts
 Requires at least: 6.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.7.4
+Stable tag: 1.7.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -64,6 +64,9 @@ Yes.
 2. Filtered results
 
 == Changelog ==
+
+= 1.7.5 =
+* WordPress 7.1 compatibility
 
 = 1.7.4 =
 * WordPress 7.0 compatibility
